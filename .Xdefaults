@@ -1,0 +1,17 @@
+URxvt*saveLines: 10000
+URxvt*scrollBar:false
+URxvt.iso14755 : false
+
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
+
+URxvt.font: xft:JetBrains Mono:size=9
+URxvt.blodFont: xft:JetBrains Mono:size=9
+
+URxvt.depth: 32
+*.background: rgba:0707/0707/0606/dddd
+
+! special
+*.foreground:   #d4dac6
+*.cursorColor:  #d4dac6
