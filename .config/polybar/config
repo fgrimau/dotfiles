@@ -28,12 +28,15 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+
 [settings]
 screenchange-reload = true
+
 
 [global/wm]
 margin-top = 0
 margin-bottom = 0
+
 
 [bar/top]
 enable-ipc = true
@@ -78,6 +81,7 @@ scroll-down = i3wm-wsnext
 double-click-left = notify-send -u low doubleclick
 double-click-right = notify-send -u low doubleclick2
 
+
 [bar/bottom]
 inherit = bar/top
 
@@ -95,22 +99,10 @@ overline-size = ${bar/top.underline-size}
 
 modules-left = memory cpu
 modules-center = spotify
-modules-right = github fs-root battery
+modules-right = fs-root battery
 
 tray-position = none
 
-
-
-[module/github]
-type = internal/github
-token = ${file:/home/minigrim0/.config/polybar/github.token}
-
-;empty-notifications = true
-
-label =  %{A1:firefox --new-window https\://github.com/notifications&:}%notifications%%{A}
-label-padding = 2
-label-background = #f0c209
-label-foreground = #000
 
 [module/fs-root]
 type = internal/fs
@@ -124,35 +116,27 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
-; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
-; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = 2
 
-; visible = Active workspace on unfocused monitor
 label-visible = %index%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
-; urgent = Workspace with urgency hint set
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-; Separator in between workspaces
 label-separator = |
 
 [module/cpu]
@@ -187,7 +171,6 @@ ramp-coreload-6-foreground = #ff5555
 ramp-coreload-7 = █
 ramp-coreload-7-font = 1
 ramp-coreload-7-foreground = #ff5555
-
 
 
 [module/memory]
@@ -238,7 +221,6 @@ time = %H:%M:%S
 interval = 1
 
 
-
 [module/xbacklight]
 type = internal/xbacklight
 format = <ramp> <label>
@@ -247,7 +229,6 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = #666
 label-foreground = ${root.foreground}
-
 
 
 [module/pulseaudio]
@@ -328,19 +309,16 @@ label-indicator-padding = 2
 label-indicator-background = ${colors.accent}
 
 
-
 [module/xwindow]
 type = internal/xwindow
 format =  <label>
 label-maxlen = 75
 
 
-
 [module/counter]
 type = internal/counter
 format = <counter>
 interval = 0.1
-
 
 
 [module/spotify]

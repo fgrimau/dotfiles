@@ -13,6 +13,7 @@
 exec --no-startup-id xcompmgr -c
 exec --no-startup-id xinput --set-prop "ELAN0501:01 04F3:3060 Touchpad" "libinput Natural Scrolling Enabled" 0
 exec --no-startup-id flameshot
+exec --no-startup-id dunst
 exec_always --no-startup-id ~/.config/i3/background/background.sh
 
 set $mod Mod4
@@ -54,22 +55,19 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -combi-modi run -theme flamingo -font "JetBrains Mono 10" -show run -icon-theme "Papirus" -show-icons
+bindsym $mod+i exec rofi -combi-modi window -theme flamingo -font "JetBrains Mono 10" -show window -icon-theme "Papirus" -show-icons
+bindsym $mod+c exec rofi calc -theme flamingo -font "JetBrains Mono 10" -show calc
 bindsym $mod+w exec --no-startup-id firefox
 bindsym $mod+x exec --no-startup-id chromium
 bindsym $mod+Shift+f exec --no-startup-id flameshot gui
 bindsym $mod+Shift+b exec --no-startup-id ~/.config/i3/background/background.sh
-
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -155,12 +153,11 @@ bindsym $mod+Shift+l exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 set $Locker i3lock-fancy --font /usr/share/fonts/TTF/JetBrainsMono-Regular.ttf  && sleep 1
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system  (l) , (e) , (s) , (r) , (S) 
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id  systemctl poweroff -i, mode "default"
 
@@ -195,27 +192,22 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 ## quick terminal
-for_window [instance="metask"] floating enable;
-for_window [instance="metask"] move scratchpad; [instance="metask"] scratchpad show; move position 0px 20px; resize shrink width 100000px; resize grow width 1850px; resize shrink height 10000px; resize grow height 500px; move scratchpad
-bindsym $mod+Shift+z [instance="metask"] scratchpad show
-bindsym $mod+Shift+t exec --no-startup-id urxvt -name metask
-exec --no-startup-id urxvt -name metask
+for_window [instance="IRC"] floating enable;
+for_window [instance="IRC"] move scratchpad; [instance="IRC"] scratchpad show; move position 0px 20px; resize shrink width 100000px; resize grow width 1850px; resize shrink height 10000px; resize grow height 500px; move scratchpad
+bindsym $mod+Shift+z [instance="IRC"] scratchpad show
+bindsym $mod+Shift+t exec --no-startup-id termite --name IRC
+exec --no-startup-id termite --name IRC
 
 ## left terminal
 for_window [instance="lefttask"] floating enable;
 for_window [instance="lefttask"] move scratchpad; [instance="lefttask"] scratchpad show; move position 0px 20px; resize shrink width 100000px; resize grow width 600px; resize shrink height 10000px; resize grow height 1015px; move scratchpad
 bindsym $mod+Shift+a [instance="lefttask"] scratchpad show
-bindsym $mod+Shift+o exec --no-startup-id urxvt -name lefttask
-exec --no-startup-id urxvt -name lefttask
+bindsym $mod+Shift+o exec --no-startup-id termite --name lefttask
+exec --no-startup-id termite --name lefttask
 
 ## right terminal
 for_window [instance="righttask"] floating enable;
 for_window [instance="righttask"] move scratchpad; [instance="righttask"] scratchpad show; move position 1250px 20px; resize shrink width 100000px; resize grow width 600px; resize shrink height 10000px; resize grow height 1015px; move scratchpad
 bindsym $mod+Shift+e [instance="righttask"] scratchpad show
-bindsym $mod+Shift+p exec --no-startup-id urxvt -name righttask
-exec --no-startup-id urxvt -name righttask
-
-## Launcher
-for_window [instance="launcher"] floating enable;
-for_window [instance="launcher"] move scratchpad; [instance="launcher"] scratchpad show; move position 860px 530px; resize shrink width 100000px; resize grow width 200px; resize shrink height 100000px; resize grow height 20px
-bindsym $mod+d exec --no-startup-id INSTANCE="launcher" urxvt -name launcher
+bindsym $mod+Shift+p exec --no-startup-id termite --name righttask
+exec --no-startup-id termite --name righttask
