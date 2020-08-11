@@ -1,12 +1,5 @@
 export ZSH="/home/minigrim0/.oh-my-zsh"
 
-if [[ "$INSTANCE" == "launcher" ]];then
-    ZSH_THEME="evan"
-    python3 .config/i3/launcher.py && exit
-else
-    ZSH_THEME="gallois"
-fi
-
 TERM=xterm-256color
 EDITOR=vim
 export EDITOR=vim
