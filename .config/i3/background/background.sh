@@ -1,12 +1,14 @@
 notify-send Background-Manager "updating the background"
 wget -q --spider http://google.com
 
-if [ $? -eq 0 ]; then
+if [ $? -eq 0 ]; then # The computer is connected to internet
     ID=$(( ( RANDOM % 1085 ) )) # Generate random number
+    echo "Gathering image $ID"
     rm ~/.config/i3/background/1080 -f # Delete old image
     cd .config/i3/background
     wget https://picsum.photos/id/$ID/1920/1080 # Get new image
     if [[ $? -eq 0 ]];then
+        echo "Got the image"
         AUTHOR=$(curl https://picsum.photos/id/$ID/info -s | jq -r '.author') # Get new image author
 
         # Print author's name on the image
@@ -26,6 +28,7 @@ if [ $? -eq 0 ]; then
         echo $ID > ~/.config/i3/background/current_id
         notify-send Background-Manager "Done !"
     else
+        echo "Failed to retreive image"
         notify-send Background-Manager "Failed to retreive image !" -u critical
     fi
 else

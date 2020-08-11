@@ -4,5 +4,5 @@
 * wm : i3
 * Terminal : Urxvt
 * ligthdm theme : [litarvan](https://github.com/Litarvan/lightdm-webkit-theme-litarvan)
-* broswers: Firefox + chromium
+* browsers: Firefox + chromium
 * screenshot : flameshot
