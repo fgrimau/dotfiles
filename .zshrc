@@ -1,5 +1,7 @@
 export ZSH="/home/minigrim0/.oh-my-zsh"
 
+ZSH_THEME="gallois"
+
 TERM=xterm-256color
 EDITOR=vim
 export EDITOR=vim
@@ -42,5 +44,9 @@ searchall(){
 findin(){
     cat $1 | grep $2
 }
+cat(){
+    ccat $1
+}
 
 alias config='/usr/bin/git --git-dir=/home/minigrim0/.cfg/ --work-tree=/home/minigrim0'
+alias activate="source */bin/activate"
