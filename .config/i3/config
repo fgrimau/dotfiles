@@ -61,9 +61,9 @@ bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -combi-modi run -theme flamingo -font "JetBrains Mono 10" -show run -icon-theme "Papirus" -show-icons
-bindsym $mod+i exec rofi -combi-modi window -theme flamingo -font "JetBrains Mono 10" -show window -icon-theme "Papirus" -show-icons
-bindsym $mod+c exec rofi calc -theme flamingo -font "JetBrains Mono 10" -show calc
+bindsym $mod+d exec rofi -combi-modi run -theme onedark -font "JetBrains Mono 10" -show run -icon-theme "Papirus" -show-icons
+bindsym $mod+i exec rofi -combi-modi window -theme onedark -font "JetBrains Mono 10" -show window -icon-theme "Papirus" -show-icons
+bindsym $mod+c exec rofi calc -theme onedark -font "JetBrains Mono 10" -show calc
 bindsym $mod+w exec --no-startup-id firefox
 bindsym $mod+x exec --no-startup-id chromium
 bindsym $mod+Shift+f exec --no-startup-id flameshot gui
@@ -152,6 +152,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+l exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 set $Locker i3lock-fancy --font /usr/share/fonts/TTF/JetBrainsMono-Regular.ttf  && sleep 1
+bindsym $mod+l exec --no-startup-id $Locker
 
 set $mode_system  (l) , (e) , (s) , (r) , (S) 
 mode "$mode_system" {
