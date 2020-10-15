@@ -8,7 +8,7 @@ if API_KEY is None:
     print("No key found")
     exit(0)
 
-API_URL = "https://api.openweathermap.org/data/2.5/weather?q=brussels&appid=***REMOVED***"
+API_URL = "https://api.openweathermap.org/data/2.5/weather?q=brussels&appid={}".format(API_KEY)
 
 r = requests.get(API_URL)
 data = json.loads(r.content)
